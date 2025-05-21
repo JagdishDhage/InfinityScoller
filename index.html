@@ -3,21 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Scroll</title>
+    <meta name="description" content="Infinite Scroll Image Gallery - Beautiful endless images from Unsplash">
+    <title>Infinite Image Gallery</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <h1 class="heading">Infinite Scroller</h1>
-    <div class="loader" id="loader" >
+    <header>
+        <h1 class="heading">Infinite Gallery</h1>
+        <p class="subtitle">Scroll down to discover beautiful images</p>
+    </header>
+    
+    <div class="loader" id="loader">
         <img src="loader.svg" alt="Loading">
+        <p class="loading-text">Preparing your gallery...</p>
     </div>
+    
     <div class="imagecontainer" id="imgcontainer">
-       <!-- images will be loaded here -->
+       <!-- Images will be loaded here -->
     </div>
+    
+    <footer>
+        <p>Images provided by <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+        <div class="social-links">
+            <a href="#" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Twitter profile"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+    
+    <!-- Back to top button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
     <!-- Script -->
     <script src="script.js"></script>
+    
+    <!-- Additional script for back to top button -->
+    <script>
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // Scroll to top when button is clicked
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
